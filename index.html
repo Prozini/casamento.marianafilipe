@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Nome] & [Nome] — Vamos casar-nos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F6F1;
+    --ink:#23241F;
+    --ink-soft:#5B5C55;
+    --sage:#7E8C71;
+    --sage-deep:#57624C;
+    --blush:#D8C3B0;
+    --line:#DEDACF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:'Fraunces',serif;}
+  .eyebrow{
+    font-family:'Inter',sans-serif;
+    font-size:12px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--sage-deep);
+    font-weight:600;
+    margin-bottom:1rem;
+    display:block;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 1.5rem;}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:20;
+    background:rgba(247,246,241,.88);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex;align-items:center;justify-content:center;
+    gap:2rem;padding:1rem 1.5rem;flex-wrap:wrap;
+  }
+  nav a{
+    color:var(--ink-soft);text-decoration:none;
+    font-size:13px;letter-spacing:.05em;text-transform:uppercase;
+    transition:color .2s;
+  }
+  nav a:hover{color:var(--sage-deep);}
+
+  /* HERO */
+  .hero{
+    min-height:90vh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:4rem 1.5rem;position:relative;
+  }
+  .hero .eyebrow{opacity:0;animation:fadeUp .8s ease forwards .1s;}
+  .hero h1{
+    font-size:clamp(2.6rem,8vw,5rem);
+    font-weight:500;
+    line-height:1.05;
+    opacity:0;animation:fadeUp .9s ease forwards .3s;
+  }
+  .amp{
+    font-style:italic;font-weight:400;color:var(--sage-deep);
+    display:inline-block;padding:0 .15em;
+  }
+  .hero .date{
+    margin-top:1.5rem;font-size:1.05rem;color:var(--ink-soft);
+    letter-spacing:.03em;
+    opacity:0;animation:fadeUp .9s ease forwards .55s;
+  }
+  .hero svg.underline{
+    width:min(340px,70%);height:14px;margin-top:1.2rem;
+    opacity:0;animation:fadeUp .9s ease forwards .75s;
+  }
+  .hero svg.underline path{
+    stroke:var(--blush);stroke-width:2;fill:none;
+    stroke-dasharray:400;stroke-dashoffset:400;
+    animation:draw 1.4s ease forwards 1s;
+  }
+  .hero .sub{
+    margin-top:2rem;max-width:420px;color:var(--ink-soft);font-size:.98rem;
+    opacity:0;animation:fadeUp .9s ease forwards .95s;
+  }
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes draw{to{stroke-dashoffset:0;}}
+
+  .scroll-cue{
+    position:absolute;bottom:2.2rem;left:50%;transform:translateX(-50%);
+    font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-soft);
+    opacity:0;animation:fadeUp .8s ease forwards 1.3s;
+  }
+
+  /* SECTIONS */
+  section{padding:6rem 0;}
+  section.alt{background:#F2F0E7;}
+  h2.serif{
+    font-size:clamp(1.9rem,4.5vw,2.6rem);
+    font-weight:500;margin-bottom:1.75rem;
+  }
+  .lead{max-width:560px;color:var(--ink-soft);}
+
+  /* STORY */
+  .story p{margin-bottom:1.1rem;max-width:600px;}
+
+  /* PROGRAMA — timeline */
+  .timeline{border-top:1px solid var(--line);margin-top:2.5rem;}
+  .titem{
+    display:grid;grid-template-columns:110px 1fr;gap:1.5rem;
+    padding:1.6rem 0;border-bottom:1px solid var(--line);
+  }
+  .titem time{
+    font-family:'Fraunces',serif;font-style:italic;color:var(--sage-deep);
+    font-size:1.15rem;white-space:nowrap;
+  }
+  .titem h3{font-weight:600;font-size:1.02rem;margin-bottom:.25rem;}
+  .titem p{color:var(--ink-soft);font-size:.93rem;}
+
+  /* PRÁTICO — cards */
+  .cards{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:1.5rem;margin-top:2.5rem;
+  }
+  .card{
+    background:var(--paper);border:1px solid var(--line);border-radius:2px;
+    padding:1.75rem;
+  }
+  section.alt .card{background:#FBFAF6;}
+  .card h3{
+    font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--sage-deep);font-weight:600;margin-bottom:.7rem;
+  }
+  .card p{color:var(--ink-soft);font-size:.95rem;}
+  .card a{color:var(--sage-deep);}
+
+  /* FOOTER */
+  footer{
+    text-align:center;padding:5rem 1.5rem 4rem;
+  }
+  footer .amp-big{
+    font-family:'Fraunces',serif;font-style:italic;font-size:3rem;
+    color:var(--blush);display:block;margin-bottom:1rem;
+  }
+  footer p{color:var(--ink-soft);font-size:.95rem;}
+
+  .edit-note{
+    background:#FFF6E0;border:1px dashed #D9BE6E;color:#6B5310;
+    font-size:.82rem;padding:.6rem .9rem;border-radius:4px;margin-bottom:1.5rem;
+    max-width:600px;
+  }
+
+  @media(max-width:560px){
+    .titem{grid-template-columns:1fr;gap:.3rem;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#historia">A nossa história</a>
+    <a href="#programa">Programa</a>
+    <a href="#informacoes">Informações</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <span class="eyebrow">Vamos casar-nos</span>
+  <h1 class="serif">[Nome]<span class="amp">&amp;</span>[Nome]</h1>
+  <svg class="underline" viewBox="0 0 300 14"><path d="M2,8 Q75,2 150,8 T298,8"/></svg>
+  <p class="date serif">[dia] de [mês] de [ano] · [Local do evento]</p>
+  <p class="sub">Convidamos-vos a celebrar este dia connosco.</p>
+  <span class="scroll-cue">↓ Saber mais</span>
+</section>
+
+<section id="historia">
+  <div class="wrap story">
+    <span class="eyebrow">A nossa história</span>
+    <h2 class="serif">Como tudo começou</h2>
+    <div class="edit-note">Editar aqui: substitui este texto pela vossa história — onde se conheceram, um momento marcante, o pedido de casamento.</div>
+    <p class="lead">[Escreve aqui como se conheceram — o ano, o local, e o que tornou esse encontro especial.]</p>
+    <p class="lead">[Segundo parágrafo, opcional — um momento marcante da vossa relação ou a história do pedido de casamento.]</p>
+  </div>
+</section>
+
+<section class="alt" id="programa">
+  <div class="wrap">
+    <span class="eyebrow">O grande dia</span>
+    <h2 class="serif">Programa</h2>
+    <p class="lead">Um resumo dos momentos do dia, para se organizarem.</p>
+    <div class="timeline">
+      <div class="titem">
+        <time>15:00</time>
+        <div><h3>Cerimónia</h3><p>[Nome do local da cerimónia, morada]</p></div>
+      </div>
+      <div class="titem">
+        <time>16:30</time>
+        <div><h3>Cocktail de boas-vindas</h3><p>[Local do cocktail]</p></div>
+      </div>
+      <div class="titem">
+        <time>19:00</time>
+        <div><h3>Jantar</h3><p>[Local do jantar / salão]</p></div>
+      </div>
+      <div class="titem">
+        <time>22:00</time>
+        <div><h3>Festa</h3><p>[Detalhes adicionais, se aplicável]</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="informacoes">
+  <div class="wrap">
+    <span class="eyebrow">Informações práticas</span>
+    <h2 class="serif">Para vos ajudar a preparar</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Local</h3>
+        <p>[Nome do espaço]<br>[Morada completa]</p>
+      </div>
+      <div class="card">
+        <h3>Dress code</h3>
+        <p>[Ex.: Traje de cerimónia. Evitar branco e tons de noiva.]</p>
+      </div>
+      <div class="card">
+        <h3>Alojamento</h3>
+        <p>[Sugestões de hotéis próximos, com nome e distância.]</p>
+      </div>
+      <div class="card">
+        <h3>Transporte</h3>
+        <p>[Informação sobre estacionamento, transfer ou transportes públicos.]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="amp-big">&amp;</span>
+  <p>Com amor, [Nome] &amp; [Nome]</p>
+</footer>
+
+</body>
+</html>
